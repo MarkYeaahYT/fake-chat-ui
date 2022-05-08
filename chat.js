@@ -1,69 +1,90 @@
 $(document).ready(function() {
+    /**
+     * ====================================================================================================
+     * Property
+     * ====================================================================================================
+     */
+    let IS_LOADING = true;
+    /**
+     * ====================================================================================================
+     * end property
+     * ====================================================================================================
+     */
 
-    // Generate and show response
-    $('.option-one').text($('.messages .message.active .response').data('response-one'));
-    $('.option-two').text($('.messages .message.active .response').data('response-two'));
-
-    // First message to appear
-    $('.messages .message.active .question').text($('.messages').data('opening-message'));
-
-    $('.options a').click(function(){
-
-        message_delay = 1000;
-        active_response = $('.messages .message.active .response');
-        active_message = $('.messages .message.active .question');
-
-        // Remove options
-        $('.options').css('bottom', '-100');
-
-        // Update reply with option clicked
-        if ($(this).hasClass('option-one')) {
-            message = active_message.data('message-one');
-            response = active_response.data('response-one');
-            setTimeout(function(){$('.option-two').hide();}, message_delay);  
-        } else {
-            message = active_message.data('message-two');
-            response = active_response.data('response-two');
-            setTimeout(function(){$('.option-one').hide();}, message_delay);  
-        }
-        active_response.text(response);
-        active_response.show();
-
-
-        // Show next message and current question is asked
-        $('.messages .message.active').next().addClass('active');
-        $('.messages .message.active:first').removeClass('active').addClass('asked');
-
-        $('.messages .message.active .question').hide();
-        setTimeout(function(){
-            $('.messages .message.active .question').show();
-        }, message_delay);        
-        $('.messages .message.active .question').text('...').addClass('loading');
+    /**
+     * ====================================================================================================
+     * Function
+     * ====================================================================================================
+     */
+    const send_message = () => {
+        
+        const audio = new Audio("assets/iphone_send.wav");
+        audio.play();
+        
+        pesan = $('input#input_sendit').val()
 
         // Once response has loaded, do this
-        setTimeout(function(){
-            $('.messages .message.active .question').text(message).removeClass('loading');
+        $('.messages .message:last .question').text(`${pesan}`).removeClass('loading');
 
-            page_bottom = $(document).height();
+        page_bottom = $(document).height();
 
-            $('html, body').animate({
-                scrollTop: page_bottom
-            }, 500);
+        $('html, body').animate({
+            scrollTop: page_bottom
+        }, 500);
 
-            // Update reply options
-            $('.options').css('bottom', '10');
-            $('.option-one').text($('.messages .message.active .response').data('response-one'));
-            $('.option-two').text($('.messages .message.active .response').data('response-two'));
+        IS_LOADING = true;
+    }
 
-            // If only one option, assume it's the last question
-            if ($('.option-two').text() == '') {
-                $('.option-two').hide();
-            }
+    const show_loading = () => {
+        let html = `<div class="message active">
+                        <p class="question"></p>
+                    </div>`;
 
-            // if all questions asked, hide responses
-            if ($('.messages .message.asked').length == $('.messages .message').length) {
-                $('.options').hide();
-            }
-        }, message_delay * 4);
+        $('div.messages').append(html);
+
+        $('.messages .message:last .question').text('...').addClass('loading');
+        IS_LOADING = false;
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+    /**
+     * ====================================================================================================
+     * end Function
+     * ====================================================================================================
+     */
+
+    /**
+     * ====================================================================================================
+     * Callback
+     * ====================================================================================================
+     */
+    $('button#sendit').click(function(){
+
+        send_message()
     });
+
+    $('input#input_sendit').on('keypress',function(e) {
+        if(e.which == 13) {
+            send_message()
+        }
+    });
+    $('input#input_sendit').on('keyup',function(e) {
+
+        if(IS_LOADING){
+            
+            if(e.which == 13) {
+            
+            }else{
+            
+                show_loading()
+            }
+            
+        }else{
+
+        }
+    });
+    /**
+     * ====================================================================================================
+     * end Callback
+     * ====================================================================================================
+     */
 });

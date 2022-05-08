@@ -2,11 +2,20 @@
 /*	Main Styles
 	===================================	*/
 
+:root {
+    --send-bg: #0B93F6;
+    --send-color: white;
+    --receive-bg: #E5E5EA;
+    --receive-text: black;
+    --page-background: white;
+}
 
 body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
     padding: 0;
     margin: 0;
-    font: 15px Arial, Helvetica, Sans-serif;
     background: #e8e8e8;
 }
 
@@ -76,31 +85,65 @@ body {
 }
 
 .messages p {
-    position: relative;
     display: none;
     float: left;
     clear: both;
-    padding: 10px 14px;
     margin: 6px 0;
-    max-width: 80%;
-    background: #fff;
-    border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+
+    max-width: 255px;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    line-height: 24px;
+
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: #0B93F6;
+    position: relative;
 }
 
 .messages p.question {
-    left: 30px;
+    /* left: 30px;
+
+    color: var(--send-color); 
+	background: var(--send-bg);
+	align-self: flex-start; */
 }
 
 .messages p.question::before {
-    display: block;
+    /* display: block;
     position: absolute;
     top: -30px;
     left: -80px;
     -moz-transform: scale(0.38);
     -webkit-transform: scale(0.38);
     transform: scale(0.38);
-    content: url('avatar.png');
+    content: url('avatar.png'); */
+
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #0B93F6;
+    border-bottom-right-radius: 15px;
+}
+
+.messages p.question::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: #e8e8e8;
+    border-bottom-right-radius: 10px;
 }
 
 .messages .message:first-child p {
@@ -265,7 +308,6 @@ body {
     }
     50% {
     	transform: scale(0.9);
-    	box-shadow: inset 0 0 100px #efefef;
     }
     100% {
         transform: scale(1);
