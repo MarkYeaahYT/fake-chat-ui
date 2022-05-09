@@ -4,7 +4,9 @@
 
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen,projection" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 	<script src="chat.js" type="text/javascript"></script>
 
 </head>
@@ -19,10 +21,14 @@
 	<div class="options">
 		<div class="container mx-auto">
 			<div class="w-1/2 max-w-sm float-right">
-				<div class="flex items-center border-b border-teal-500 py-2">
-					<input id="input_sendit" class="appearance-none bg-transparent border-none w-full text-black mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="SEND Bruh" aria-label="message">
-					<button id="sendit" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
-						Send
+				<div class="flex items-center py-2">
+					<!-- <input id="input_sendit" class="appearance-none bg-transparent border-none w-full text-black mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="message boiiss" aria-label="message"> -->
+					<input id="input_sendit" class="rounded-l-lg p-4 mr-0 text-gray-800 bg-white" type="text" placeholder="message boiiss" aria-label="message" style="border-radius: 40px 0px 0px 40px;">
+					<!-- <button id="sendit" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">Send</button> -->
+					<button id="sendit" class="px-8 rounded-r-lg bg-indigo-400  text-gray-800 font-bold p-4 uppercase border-indigo-400 border-t border-b border-r" type="button" style="border-radius: 0px 40px 40px 0px;">
+						<svg viewBox="0 0 512 512" width="25" title="paper-plane">
+							<path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z" />
+						</svg>
 					</button>
 				</div>
 			</div>
